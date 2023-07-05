@@ -23,7 +23,7 @@ def bakeries():
     bakeries = Bakery.query.all()
     bakeries_serialized = [bakery.to_dict() for bakery in bakeries]
     response = make_response(
-        bakeries_serialized,
+        jsonify(bakeries_serialized),
         200
     )
     return response
@@ -34,7 +34,7 @@ def bakery_by_id(id):
 
     bakery_dict = bakery.to_dict()
     response = make_response(
-        bakery_dict,
+        jsonify(bakery_dict),
         200
     )
     return response
@@ -44,7 +44,7 @@ def baked_goods_by_price():
     baked_goods_by_price = BakedGood.query.order_by(BakedGood.price.desc()).all()
     baked_goods_by_price_serialized = [baked_good.to_dict() for baked_good in baked_goods_by_price]
     response = make_response(
-        baked_goods_by_price_serialized,
+        jsonify(baked_goods_by_price_serialized),
         200
     )
     return response
@@ -54,7 +54,7 @@ def most_expensive_baked_good():
     most_expensive = BakedGood.query.order_by(BakedGood.price.desc()).first()
     most_expensive_serialized = most_expensive.to_dict()
     response = make_response(
-        most_expensive_serialized,
+        jsonify(most_expensive_serialized),
         200
     )
     return response
