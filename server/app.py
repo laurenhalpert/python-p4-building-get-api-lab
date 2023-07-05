@@ -26,6 +26,7 @@ def bakeries():
         jsonify(bakeries_serialized),
         200
     )
+    response.headers['Content-Type'] = 'application/json'
     return response
 
 @app.route('/bakeries/<int:id>')
@@ -37,6 +38,7 @@ def bakery_by_id(id):
         jsonify(bakery_dict),
         200
     )
+    response.headers['Content-Type'] = 'application/json'
     return response
 
 @app.route('/baked_goods/by_price')
@@ -47,6 +49,7 @@ def baked_goods_by_price():
         jsonify(baked_goods_by_price_serialized),
         200
     )
+    response.headers['Content-Type'] = 'application/json'
     return response
 
 @app.route('/baked_goods/most_expensive')
@@ -57,6 +60,7 @@ def most_expensive_baked_good():
         jsonify(most_expensive_serialized),
         200
     )
+    response.headers['Content-Type'] = 'application/json'
     return response
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
